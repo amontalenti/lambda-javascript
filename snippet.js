@@ -15,7 +15,7 @@ assert(one == 1); // works
 assert(typeof one == "number"); // works
 assert(one !== null); // works
 assert(one + one == 2); // works
-assert(typeof one != "undefined"); // works 
+assert(typeof one != "undefined"); // works
 assert(typeof empty == "undefined"); // works
 assert(nil == null); // works
 

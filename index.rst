@@ -28,8 +28,8 @@ JavaScript iteration
     // 3 32
     // 4 5
 
-What's going on here?
-=====================
+But, what's going on here?
+==========================
 
 .. sourcecode:: JavaScript
 
