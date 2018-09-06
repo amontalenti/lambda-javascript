@@ -530,18 +530,6 @@ JavaScript unique stuff
 | Object Orientation     | Trad'l, class-based | Prototypal      |
 +------------------------+---------------------+-----------------+
 
-Exercise!
-=========
-
-Implement:
-
-- ``Stack.push``: add element to Stack
-- ``Stack.peek``: look at top element on Stack
-- ``Stack.pop``: pop top element and return it
-- ``Stack.clear``: clear this to empty; hint: ``forEach => pop``
-- ``Stack.extend``: join this to that; hint: ``forEach/push``
-- ``Stack.copy``: copy this into new; hint: ``extend new``
-
 Module pattern (1)
 ==================
 
@@ -579,6 +567,18 @@ Babel toolchain and ES6+: that modularization is a mess otherwise.
 
 **BUT**: the cool thing is that all modules basically work the way described
 on the last slide.
+
+Exercise!
+=========
+
+Implement:
+
+- ``Stack.push``: add element to Stack
+- ``Stack.peek``: look at top element on Stack
+- ``Stack.pop``: pop top element and return it
+- ``Stack.clear``: clear this to empty; hint: ``forEach => pop``
+- ``Stack.extend``: join this to that; hint: ``forEach/push``
+- ``Stack.copy``: copy this into new; hint: ``extend new``
 
 Till next time!
 ===============
