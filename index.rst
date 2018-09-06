@@ -302,6 +302,27 @@ Our first "browser compatibility issue"
 
 .. _Polyfill: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#Polyfill
 
+The Microsoft bottleneck
+========================
+
+IE has 11.87% global market share (IE 6-11).
+
+================== =================== ===================
+Version            Share               JS spec
+================== =================== ===================
+IE 11              77%                 ES5
+IE 8               10%                 ES3, some quirks
+IE 9               4.5%                ES5*
+IE 10              4%                  ES5
+IE 6               1.8%                ES3, many quirks
+IE 7               1.3%                ES3, many quirks
+================== =================== ===================
+
+- 2012-2013: ES 5 compatible browsers released.
+- 2017-2018: ES 6/7 compatible browsers released.
+
+
+
 Explaining ``this`` with ``forEach``
 ====================================
 
@@ -509,11 +530,62 @@ JavaScript unique stuff
 | Object Orientation     | Trad'l, class-based | Prototypal      |
 +------------------------+---------------------+-----------------+
 
-Still left to cover
-===================
+Exercise!
+=========
 
-- Preview of ES6 scoping rules.
-- The formal "module pattern".
+Implement:
+
+- ``Stack.push``: add element to Stack
+- ``Stack.peek``: look at top element on Stack
+- ``Stack.pop``: pop top element and return it
+- ``Stack.clear``: clear this to empty; hint: ``forEach => pop``
+- ``Stack.extend``: join this to that; hint: ``forEach/push``
+- ``Stack.copy``: copy this into new; hint: ``extend new``
+
+Module pattern (1)
+==================
+
+.. sourcecode:: JavaScript
+
+        window.Collections = Object.create(null);
+
+        (function(root) {
+            function Stack(arr) {
+                this.arr = arr;
+            };
+            Stack.prototype.forEach = function(callback) {
+                for (var i = 0; i < this.arr.length; i++) {
+                    callback(this.arr[i], i, this.arr);
+                }
+            };
+            // export
+            root.Stack = Stack;
+        })(window.Collections);
+
+        var stack = new Collections.Stack([1, 2, 3]);
+        stack.forEach(console.log);
+
+Module pattern (2)
+==================
+
+In standard JS (even up to ES5), this is your only option for modularization.
+
+In ES5, this went into a terrible direction as two "popular" module systems
+took hold in open source: CommonJS (from Node) and AMD (aka RequireJS).
+
+This created a mess in the community, but ES6 introduced a formal and
+language-supported module system. This is one of the biggest reasons to adopt a
+Babel toolchain and ES6+: that modularization is a mess otherwise.
+
+**BUT**: the cool thing is that all modules basically work the way described
+on the last slide.
+
+Till next time!
+===============
+
+Still to come:
+
+- Preview of ES6 scoping rules and modules.
 - ``Object`` vs ``dict`` and dynamic dispatch.
 - Binary search basic algorithm.
 - Binary search recursive version with named function expressions.
